@@ -6,18 +6,7 @@ import (
 	"main/utils"
 )
 
-type ConsoleUI struct {
-	fibService *service.FibonacciService
-}
-
-func NewConsoleUI(fibService *service.FibonacciService) (*ConsoleUI, error) {
-	ui := &ConsoleUI{
-		fibService: fibService,
-	}
-	return ui, nil
-}
-
-func (ui *ConsoleUI) Start() {
+func Start() {
 	var msg string = "Enter a int value: "
 	input, err := utils.ScanfInteger(&msg)
 
@@ -26,7 +15,7 @@ func (ui *ConsoleUI) Start() {
 		return
 	}
 
-	left, right, err := ui.fibService.GetFibonacciNeighbors(input)
+	left, right, err := service.GetFibonacciNeighbors(input)
 
 	if err != nil {
 		fmt.Println(err)

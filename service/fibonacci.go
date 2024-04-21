@@ -5,33 +5,26 @@ import (
 	"main/utils"
 )
 
-type FibonacciService struct {
-}
-
-func NewFibonacciService() (*FibonacciService, error) {
-	return &FibonacciService{}, nil
-}
-
-func (service *FibonacciService) IsFibonacci(number *int) *bool {
+func IsFibonacci(number *int) *bool {
 	left := 5**number**number + 4
 	right := 5**number**number - 4
 	result := *utils.IsPerfectSquare(&left) || *utils.IsPerfectSquare(&right)
 	return &result
 }
 
-func (service *FibonacciService) GetFibonacciNeighbors(number *int) (*int, *int, error) {
-	if !*service.IsFibonacci(number) {
+func GetFibonacciNeighbors(number *int) (*int, *int, error) {
+	if !*IsFibonacci(number) {
 		return nil, nil, errors.New("number isn`t fibonacci")
 	}
 
 	prev := *number - 1
 	next := *number + 1
 
-	for !*service.IsFibonacci(&prev) {
+	for !*IsFibonacci(&prev) {
 		prev--
 	}
 
-	for !*service.IsFibonacci(&next) {
+	for !*IsFibonacci(&next) {
 		next++
 	}
 

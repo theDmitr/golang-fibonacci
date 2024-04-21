@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-	var service *service.FibonacciService = &service.FibonacciService{}
+	var service, _ = service.NewFibonacciService()
 	var ui, _ = ui.NewConsoleUI(service)
 	ui.Start()
 }

@@ -8,6 +8,10 @@ import (
 type FibonacciService struct {
 }
 
+func NewFibonacciService() (*FibonacciService, error) {
+	return &FibonacciService{}, nil
+}
+
 func (service *FibonacciService) IsFibonacci(number *int) *bool {
 	left := 5**number**number + 4
 	right := 5**number**number - 4
